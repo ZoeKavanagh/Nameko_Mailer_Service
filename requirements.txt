@@ -1,0 +1,5 @@
+nameko
+faker
+requests
+pytest
+requests_mock
