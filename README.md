@@ -25,6 +25,27 @@ brew install rabbitmq
 
 The Mailer uses [Mailgun](https://mailgun.com) to deliver the emails.  In order for the emails to be sent to an email account you can access, you will need to create your own account with Mailgun first.  Once you have done this, you will need to update the Mailer code to ensure your personal details, these include: 1) 'To: email_address' will need updating to an email address you wish to receive the emails to 2) Your own 'api_key' which you will access from Mailgun when you have setup your account 3) The 'request_url', which you will also be able access from Mailgun once you have set up your account.  All personal/'secret' information such as the API_KEY, 'request_url' and 'email_address' can be hidden by adding these details to a config.py file, which will not be updated Github, the actual code within the 'Mailer' will not require updating.  Your config.py file should look something this:
 
+ - api_key = "XXXXXXXXXXXXXXXXXXXXX8041"
+ - email_address = "youremail@gmail.com"
+ - request_url = "https://api.mailgun.net/v3/sandboxXXXXXXXXXXXXXXXXXXX.mailgun.org/messages"
+
+As the 'Mailer' will call on these variables in the code:
+
+```
+def __init__(self):
+        self.email_address = config.email_address
+        self.request_url = config.request_url
+        self.api_key = config.api_key
+
+    def send_mail(self, payload):
+        response = requests.post(
+            self.request_url,
+            auth=("api", self.api_key),
+            data={"from": "Payment Service payments@student.com",
+                  "to": [self.email_address],
+                  "subject": "Payment Confirmation - Student.com",
+                  "text": f"Dear {payload['payee']['name']},\n\nYou have received"
+```
 
 You will need to verify your recipient(s) list to ensure the emails will be received by the chosen address. 
 
