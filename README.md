@@ -23,9 +23,9 @@ brew install rabbitmq
 
 #### Prerequisites
 
-The Mailer uses [Mailgun](https://mailgun.com) to deliver the emails.  In order for the emails to be sent to an email account you can access, you will need to create your own account with Mailgun first.  Once you have done this, you will need to update the Mailer code to ensure your personal details, such as the 'To: email_address' is updated with the email address you want the 'api_key' and the 'request_url' which will you be access from Mailgun once you have set up your account and verified your recipient(s) list (all personal/secret information such as the API_KEY and email_address can be hidden by adding these details to the config.py file, which will not be updated Github). .
+The Mailer uses [Mailgun](https://mailgun.com) to deliver the emails.  In order for the emails to be sent to an email account you can access, you will need to create your own account with Mailgun first.  Once you have done this, you will need to update the Mailer code to ensure your personal details, these include: 1) 'To: email_address' will need updating to an email address you wish to receive the emails to 2) Your own 'api_key' which you will access from Mailgun when you have setup your account 3) Tthe 'request_url', which you will also be able access from Mailgun once you have set up your account.  You will need to verify your recipient(s) list to ensure the emails will be received by the chosen address. All personal/'secret' information such as the API_KEY and email_address can be hidden by adding these details to the config.py file, which will not be updated Github).
 
-Once you have updated the Mailer/config with your own email address, Api_key and request_url, you will need to run the service in your terminal through Nameko.
+Once you have updated the Mailer || config.py with your own email address, Api_key and request_url, you will need to run the service in your terminal through Nameko.
 
 ```
 nameko run payment_service.payment_service
@@ -57,7 +57,7 @@ The testing framework used for this micro-service, is Pytest. To run the existin
  - Mailgun - API used to dispatch emails
 
 ### Further Improvements to be made
-If I had even more time to work on this programme I would like to separate out the 'formatting functionality' of the email, which is currently within the 'send_mail' method, under the Mailer class.  This would mean I could format the email and bring the elements of the data to be interpolated into the email, taking this responsibility away from the 'send_email' method. By separating these responsibilities also, testing would have been more accurate as it would possible to mock more elements to isolate the tests further.
+If I had even more time to work on this program I would like to separate out the 'formatting functionality' of the email, which is currently within the 'send_mail' method, under the Mailer class.  This would mean I could format the email and bring the elements of the data to be interpolated into the email, taking this responsibility away from the 'send_email' method. By separating these responsibilities also, testing would have been more accurate as it would possible to mock more elements to isolate the tests further.
 
 I would have also separated out the unit tests and integration tests into separate files and create both for the 'Mailer' and  'payment_service' package also (I am still to test the payment_service).
 
