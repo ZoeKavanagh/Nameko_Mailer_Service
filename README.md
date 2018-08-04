@@ -1,6 +1,6 @@
-# Nameko_Mailer_Service
+# Python_Mailer
 
-Welcome to Nameko_Mailer_Service, a nameko micro-service that will send an email to a client (landlord) via [Mailgun](https://mailgun.com) whenever a payment 'event' has been received from a tenant (the payment_service, when running, will dispatch a payment event to the Mailer every 10 seconds).
+Welcome to Python_Mailer, a micro-service that will send an email to a client (landlord) via [Mailgun](https://mailgun.com) whenever a payment 'event' has been received from a tenant (the payment_service, when running, will dispatch a payment event to the Mailer every 10 seconds).
 
 ### Getting Started
 In order to run the Mailer Service locally, you will need to complete the following steps:
